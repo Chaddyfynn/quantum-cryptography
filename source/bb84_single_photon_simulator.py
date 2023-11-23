@@ -55,7 +55,7 @@ NUM = 25
 FNAME = "B92_1000bits_100repeats_take_1.csv"
 BINS = [0, 25, 50, 75, 100, 125, 150, 200, 250, 300, 350, 400, 450, 500]
 MULTICOLOUR = True
-SIMULATE = False
+SIMULATE = True
 if SIMULATE:
     NUM_TEST = END - START
 else:
@@ -64,8 +64,10 @@ else:
 # System Variables
 PROBABILITIES = [
     ['0AA', '0AB', '0BA', '0BB', '1AA', '1AB', '1BA', '1BB'],
-    [0.992, 0.551, 0.482, 0.986, 0.003, 0.438, 0.569, 0.006],
-    [0.045, 0.031, 0.029, 0.038, 0.022, 0.024, 0.029, 0.022]
+    [0.984194058, 0.460664777, 0.52466991, 0.981594554,
+        0.001551774, 0.511767302, 0.467991511, 0.000921125],
+    [0.0019738, 0.00120231, 0.0012733, 0.0019991,
+        0.0008767, 0.0012933, 0.0011976, 0.0008773]
 ]
 
 
@@ -330,7 +332,7 @@ if __name__ == "__main__":
               'seagreen']
     labels = ['= 0', '= 1', '= 2', '= 3', '= 4', '= 5', '> 5']
 
-    ax.set(title="B92 Fidelity Simulation 8bit to 249bit Desired Length")
+    ax.set(title="BB84 Fidelity Simulation 8bit to 249bit Desired Length (Extra Conditions)")
     ax.set(xlabel="Desired Shared Key Length")
     ax2.set(ylabel="Success Ratio, %")
     ax.set(ylabel="Percentage Correctness (After Contraction), %")
@@ -369,6 +371,6 @@ if __name__ == "__main__":
     ax2.legend(loc="lower left")
     ax.grid(alpha=0.5)
     plt.tight_layout()
-    plt.savefig("Fidelity_14.png", dpi=1000)
+    plt.savefig("..//results//Fidelity_15.png", dpi=1000)
     plt.show()
     plt.clf()

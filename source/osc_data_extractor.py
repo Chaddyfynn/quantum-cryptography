@@ -17,7 +17,7 @@ from os.path import isfile, join
 from os import listdir
 import numpy as np
 
-PATH = "C:\\Users\\chadd\\OneDrive\\Documents\\Undergrad Degree\\Semester 5 (2023)\\Labs\\Week 3\\Optics Tests and Setup (Exp 2)\\New folder\\"
+PATH = "..//data//probabilities data final//"
 
 NUM_COLS = 2  # How many columns per group
 NUM_GROUPS = 2  # Number of groups

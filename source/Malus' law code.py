@@ -10,7 +10,8 @@ import matplotlib.pyplot as plt
 import csv
 from scipy.optimize import fmin
 
-FILE_NAME = "Final data.csv"
+FILE_NAME = "../data/Final data.csv"
+
 
 def get_data():
     """
@@ -36,27 +37,31 @@ def get_data():
     except FileNotFoundError:
         print('\nThe file you have requested has not been found.')
     """
-    raw_data = np.genfromtxt(FILE_NAME, dtype='float', delimiter=',', skip_header=1)
-    data = raw_data[:19]
+    raw_data = np.genfromtxt(FILE_NAME, dtype='float',
+                             delimiter=',', skip_header=1)
+    data = raw_data[:19]  # ?
     return data
 
-def function(vals,n):
+
+def function(vals, n):
     c_angle = vals
     if n == 19:
-        angle = np.arange(0,190,10)
+        angle = np.arange(0, 190, 10)
     else:
-        angle = np.linspace(0,180,50)
-    centre = np.linspace(c_angle,c_angle,n)
+        angle = np.linspace(0, 180, 50)
+    centre = np.linspace(c_angle, c_angle, n)
     return (np.cos(angle*(np.pi/180) - centre)**2)*10.65
+
 
 def inv_function(vals, n):
     c_angle = vals
     if n == 19:
-        V = np.linspace(0,10.65,19)
+        V = np.linspace(0, 10.65, 19)
     else:
-        V = np.linspace(0,10.65,50)
-    A_0 = np.linspace(10.65,10.65,n)
+        V = np.linspace(0, 10.65, 50)
+    A_0 = np.linspace(10.65, 10.65, n)
     return (np.arccos(np.sqrt(V/A_0)) + c_angle)*(180/np.pi)
+
 
 def chi_test(paras, data):
     chi_sqr_y = np.sum(
@@ -67,33 +72,39 @@ def chi_test(paras, data):
     chi_sqr = np.sqrt(chi_sqr_x**2 + chi_sqr_y**2)
     return chi_sqr
 
+
 def plot_data(data, params, chi):
-    fig = plt.figure(figsize=(12,8))
+    fig = plt.figure(figsize=(12, 8))
     ax = fig.add_subplot(111)
-    angles = np.linspace(0,180,50)
+    angles = np.linspace(0, 180, 50)
     ax.set_title("Malus' Law", fontsize=17)
     ax.set_xlabel(r'Angle ($\degree$)', fontsize=15)
     ax.set_ylabel('Voltage (V)', fontsize=15)
-    ax.errorbar(data[:, 0], data[:, 1], xerr=data[:,2], yerr=data[:, 3],
+    ax.errorbar(data[:, 0], data[:, 1], xerr=data[:, 2], yerr=data[:, 3],
                 fmt='x', color='dodgerblue', label='Data recorded')
-    ax.plot(angles, function(params, 50), color='black', label=r'$Cos^2(\theta)$ fit')
+    ax.plot(angles, function(params, 50),
+            color='black', label=r'$Cos^2(\theta)$ fit')
     ax.grid(True, color='grey', dashes=[2])
     centre = params*(180/np.pi)
-    #ax.set_ylim(6,14)
+    # ax.set_ylim(6,14)
     #ax.text(50,4.5,(r'$\chi^2$ value: {0:.3f}'.format(chi)+'\n'+r'Peak amplitude: {0:.3f} (V)'.format(params[0])+'\n'+r'$\theta_{{central}}$: {0:.3f}$\degree$'.format(centre)),bbox=dict(facecolor='dodgerblue',alpha=0.7), fontsize=12)
     #plt.legend(loc='lower left')
     plt.show()
     plt.savefig('Malus_Law_graph_1.png', dpi=800)
 
+
 def minimisation(data):
     centre_start = 100*(np.pi/180)
-    parameters = fmin(chi_test, (centre_start), full_output=True, disp=False, args=(data,))
+    parameters = fmin(chi_test, (centre_start),
+                      full_output=True, disp=False, args=(data,))
     print(parameters)
     return parameters
+
 
 def main():
     data = get_data()
     params = minimisation(data)[0]
     plot_data(data, params, chi_test(params, data))
+
 
 main()

@@ -1,0 +1,3 @@
+The naming convention here is that the 0 detector is on axis with the laser, and the 90 detector
+is perpendicular to the axis of the laser.  The 0 detector is the unlabeled detector, and the 90 detector
+has the label.

@@ -1,0 +1,3 @@
+The ThorLabs DET36A/M detector was placed a fixed distance in front of the laser.
+The distance is the same as used in experiments.
+Each file contains one pulse from the laser with clear baseline and maxima.

@@ -1,0 +1,3 @@
+The spread of each colour in the x axis is due to the random nature of the final string length.
+It should be about 50% the starding string length, but this changes randomly based on how alice and bob
+chose their bases.

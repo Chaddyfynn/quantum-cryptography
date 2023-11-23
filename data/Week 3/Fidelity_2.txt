@@ -1,0 +1,3 @@
+32bits to 32768bits (32kib) in steps of 32bits
+Mean: 98.30175
+Unc: 0.1536

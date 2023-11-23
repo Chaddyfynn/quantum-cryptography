@@ -1,0 +1,8 @@
+Overall mean: 98.2995913014331
+Overall std dev: 1.5978241384849963
+Mean success after 1/3 was: 97.89187982809167
+Standard Deviation after 1/3 was: 1.4095836579189416
+50% Chance Length At: 38 (mean every 5 points)
+BB84 Simulation from 8bit to 249bit (desired length) == 32bit to 996bit (starting length)
+Steps of 2bit (start length) or 1bit (desired length)
+About 25000 points

@@ -52,10 +52,10 @@ END = int(996/4)
 STEP = 1
 REPEAT = 50
 NUM = 25
-FNAME = "B92_1000bits_100repeats_take_1.csv"
+FNAME = "..//data//B92_996bits_100repeats_new_probs.csv"
 BINS = [0, 25, 50, 75, 100, 125, 150, 200, 250, 300, 350, 400, 450, 500]
 MULTICOLOUR = True
-SIMULATE = True
+SIMULATE = False
 if SIMULATE:
     NUM_TEST = END - START
 else:
@@ -332,7 +332,7 @@ if __name__ == "__main__":
               'seagreen']
     labels = ['= 0', '= 1', '= 2', '= 3', '= 4', '= 5', '> 5']
 
-    ax.set(title="BB84 Fidelity Simulation 8bit to 249bit Desired Length (Extra Conditions)")
+    ax.set(title="B92 Fidelity Simulation 8bit to 249bit Desired Length (Extra Conditions)")
     ax.set(xlabel="Desired Shared Key Length")
     ax2.set(ylabel="Success Ratio, %")
     ax.set(ylabel="Percentage Correctness (After Contraction), %")
@@ -371,6 +371,6 @@ if __name__ == "__main__":
     ax2.legend(loc="lower left")
     ax.grid(alpha=0.5)
     plt.tight_layout()
-    plt.savefig("..//results//Fidelity_15.png", dpi=1000)
+    plt.savefig("..//results//Fidelity_16.png", dpi=1000)
     plt.show()
     plt.clf()

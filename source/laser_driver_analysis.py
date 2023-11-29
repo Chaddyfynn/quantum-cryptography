@@ -17,6 +17,7 @@ from os.path import isfile, join
 from os import listdir
 import numpy as np
 import matplotlib.pyplot as plt
+from scipy import stats
 
 PATH = "C:\\Users\\chadd\\OneDrive\\Documents\\Undergrad Degree\\Semester 5 (2023)\\Labs\\Week 3\\Laser Driver Comparison (Exp 3)\\"
 LASER = "Laser Intensity.csv"
@@ -75,7 +76,9 @@ if __name__ == "__main__":
     index_diff = abs(laser_peak_index - driver_max_index)
     # index_diff = 280
 
-    fig, ax = plt.subplots(nrows=1, ncols=1, figsize=(5, 5))
+    res = stats.spearmanr(laser, driver)
+
+    fig, (ax, ax2) = plt.subplots(nrows=2, ncols=1, figsize=(5, 5))
     ax.set(title="Laser Signal Investigation")
     ax.set(xlabel="Time, s")
     ax.set(ylabel="Relative Intensity, Dimensionless")
@@ -85,9 +88,17 @@ if __name__ == "__main__":
     ax.errorbar(times[:-index_diff], driver[index_diff:], color="teal",
                 marker=".", linestyle='None', label="Driver Signal")
 
+    ax2.set(title="Laser Driver vs Laser Signal (Intensity)")
+    ax2.set(xlabel="Signal Intensity, Dimensionless")
+    ax2.set(ylabel="Driver Intensity, Dimensionless")
+    ax2.plot(laser, driver, color="teal", marker=".", linestyle='None',
+             label="Spearman's Correlation:" + str(round(res[0], 3)))
+
     ax.legend()
     ax.grid()
+    ax2.grid()
+    ax2.legend()
     plt.tight_layout()
-    plt.savefig("Laser Comparison.png", dpi=800)
+    plt.savefig("Laser Comparison.png", dpi=1000)
     plt.show()
     plt.clf()

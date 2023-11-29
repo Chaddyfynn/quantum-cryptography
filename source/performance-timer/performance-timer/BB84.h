@@ -2,6 +2,7 @@
 
 #include<cstdlib>
 #include<iostream>
+#include<vector>
 
 class BB84
 {
@@ -13,21 +14,21 @@ public:
 	}
 
 	// Generate Keys
-	int* genBin(int len) {
-		int* arr = new int[len];
+	std::vector<int> genBin(int len) {
+		std::vector<int> arr;
 		for (int i = 0; i < len; i++) {
-			arr[i] = rand() % 2;
+			arr.push_back(rand() % 2);
 		}
 		return arr;
 	}
 
 	// Receive Key
-	int* genSharedKey(int* initKey, int* sendBase, int* receiveBase) {
-		int len = sizeof(*initKey) / sizeof(initKey[0]);
-		int* arr = new int[len];
+	std::vector<int> genSharedKey(std::vector<int> initKey, std::vector<int> sendBase, std::vector<int> receiveBase) {
+		int len = initKey.size();
+		std::vector<int> arr;
 			for (int i = 0; i < len; i++) {
 			if (sendBase[i] == receiveBase[i]) {
-				arr[i] = initKey[i];
+				arr.push_back(initKey[i]);
 			}
 		}
 			return arr;
@@ -38,16 +39,11 @@ public:
 	// Decode Data
 
 	// Representation
-	char* toString(int* arr) {
-		int len = sizeof(*arr) / sizeof(arr[0]);
-		char* str = new char[len];
+	std::string toString(std::vector<int> arr) {
+		int len = arr.size();
+		std::string str;
 		for (int i = 0; i < len; i++) {
-			/*if (arr[i] == NULL) {
-				str[i] = 'N';
-			}
-			else {*/
-				str[i] = char(arr[i]);
-			/*}*/
+			str.push_back(48 + arr[i]); // Do not let arr contain values greater than 1, or less than 0
 		}
 		return str;
 	}

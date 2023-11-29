@@ -30,10 +30,11 @@ if __name__ == "__main__":
     key_length = int(
         input("Approximately how many bits should the shared key be?"))
     # print("Key length is", key_length)
-    t0 = t.time_ns()
-    initial_key = generate_string(2 * key_length)
-    t1 = t.time_ns()
-    print("Time taken to run function twice", (t1-t0)*2, "s")
+    t0 = t.time()
+    for _ in range(100):
+        initial_key = generate_string(2 * key_length)
+    print(t.time() - t0)
+    # print("Time taken to run function twice", (t1-t0)*2, "s")
     print("The string to send is...")
     print(initial_key)
     sent_bases = generate_string(2 * key_length)

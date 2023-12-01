@@ -1,0 +1,35 @@
+# This CITATION.cff file was generated with cffinit.
+# Visit https://bit.ly/cffinit to generate yours today!
+
+cff-version: 1.2.0
+title: Quantum Cryptography
+message: >-
+  If you use this software, please cite it using the
+  metadata from this file.
+type: software
+authors:
+  - given-names: Felipe
+    family-names: Tcach
+    email: felipe.tcach@student.manchester.ac.uk
+    affiliation: The University of Manchester
+  - given-names: Charlie
+    family-names: Perkins
+    affiliation: The University of Manchester
+    email: charlie.perkins@student.manchester.ac.uk
+repository-code: 'https://github.com/Chaddyfynn/quantum-cryptography'
+abstract: >-
+  This is the repository for the Quantum Cryptography
+  experiment performed by third year students Felipe Tcach
+  and Charlie Perkins during the first semester of the
+  academic year 2023/24.
+
+  This contains the experimental data collected, the
+  simulation data and the code used for the simulations. It
+  also contains the graphs produced from all the data
+  collected.
+keywords:
+  - Quantum Cryptography
+  - Quantum Computing
+  - Cryptography
+  - BB84
+  - B92

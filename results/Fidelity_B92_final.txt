@@ -1,0 +1,5 @@
+Overall mean: 99.67868987402572
+Overall std dev: 0.7367726722953802
+Mean success after 1/3 was: 99.51803481103859
+Standard Deviation after 1/3 was: 0.8583826700089583
+50% Chance Length At: 233
